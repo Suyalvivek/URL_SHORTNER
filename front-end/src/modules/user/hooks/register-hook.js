@@ -1,6 +1,6 @@
 import {zodResolver} from '@hookform/resolvers/zod';
 import { registerSchema } from '../validation/register-schema';
-import { registerApi } from '../api/user-api';
+import { registerApi } from '../api/user-api.js';
 import { useForm } from 'react-hook-form';
 export const useRegister=()=>{
     const{register,handleSubmit,formState:{errors}}=useForm(
@@ -10,6 +10,7 @@ export const useRegister=()=>{
         }
     );
     const doSubmit = async (formData) => {
+        console.log(formData);
         try {
             console.log(formData);
             const response = await registerApi(formData);
